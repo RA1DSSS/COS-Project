@@ -14,7 +14,17 @@ class Connect4Game:
 
 
     def create_widgets(self):
-        pass
+        self.buttons = []
+        for row in range(6):
+            button_row = []
+            for col in range(7):
+                button = tk.Button(self.master, text="", width=5, height=2, bg="#95a5a6", 
+                                   font=("Helvetica", 12, "bold"), 
+                                   command=lambda r=row, c=col: self.drop_piece(r, c), 
+                                   relief="ridge", bd=4)
+                button.grid(row=row, column=col, padx=5, pady=5)
+                button_row.append(button)
+            self.buttons.append(button_row)
 
     def create_drop_widgets(self, col):
         pass
