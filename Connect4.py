@@ -30,7 +30,21 @@ class Connect4Game:
         pass
 
     def drop_piece(self, col, row):
-        pass
+         if self.board[row][col] == 0:
+            current_row = row
+            while current_row < 5 and self.board[current_row+1][col] == 0:
+                current_row += 1
+            self.board[current_row][col] = self.turn
+            self.update_drop_piece(current_row, col)
+            if self.check_winner(current_row, col):
+                messagebox.showinfo("Winner", f"Player {self.turn} wins!")
+                self.reset_board()
+            elif all(self.board[r][c] != 0 for r in range(6) for c in range(7)):
+                messagebox.showinfo("Draw", "It's a draw!")
+                self.reset_board()
+            else:
+                self.turn = 3 - self.turn
+    
 
     def update_drop_peices(self, col, row):
         pass
