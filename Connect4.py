@@ -47,7 +47,9 @@ class Connect4Game:
     
 
     def update_drop_peices(self, col, row):
-        pass
+        player = self.board[row][col]
+        color = "red" if player == 1 else "yellow"
+        self.buttons[row][col].config(bg=color, state="disabled")
 
     def check_winner(self, col, row):
         pass
