@@ -26,8 +26,16 @@ class Connect4Game:
                 button_row.append(button)
             self.buttons.append(button_row)
 
-    def create_drop_widgets(self, col):
-        pass
+    def create_drop_button(self, col):
+        self.buttons = []
+        for row in range(6):
+            button_row = []
+            for col in range(7):
+                button = tk.Button(self.master, text=f"Drop", width=4, height=1, bg="white", 
+                                font=("Helvetica", 12, "bold"), 
+                                command=lambda c=col: self.drop_piece(0, c), 
+                                relief="raised", bd=4)
+        return button
 
     def drop_piece(self, col, row):
          if self.board[row][col] == 0:
