@@ -63,10 +63,25 @@ class Connect4Game:
         self.buttons[row][col].config(bg=color, state="disabled")
 
     def check_winner(self, col, row):
-        pass
+        directions = [(1, 0), (0, 1), (1, 1), (-1, 1)]
+        for dr, dc in directions:
+            count = 1
+            for direction in [1, -1]:
+                r, c = row + dr * direction, col + dc * direction
+                while 0 <= r < 6 and 0 <= c < 7 and self.board[r][c] == self.turn:
+                    count += 1
+                    r += dr * direction
+                    c += dc * direction
+            if count >= 4:
+                return True
+        return False
 
     def reset_board(self):
-        pass
+        for row in range(6):
+            for col in range(7):
+                self.board[row][col] = 0
+                self.buttons[row][col].config(text="", bg="#95a5a6", state="normal")
+        self.turn = 1
 
 
 if __name__ == '__main__':
