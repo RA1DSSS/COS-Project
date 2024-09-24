@@ -35,7 +35,7 @@ class Connect4Game:
                                 font=("Helvetica", 12, "bold"), 
                                 command=lambda c=col: self.drop_piece(0, c), 
                                 relief="raised", bd=4)
-                button.grid(row=row, column=col, padx=5, pady=5)
+                button.grid(row=row+1, column=col, padx=5, pady=5)
                 button_row.append(button)
             self.buttons.append(button_row)
         return button
