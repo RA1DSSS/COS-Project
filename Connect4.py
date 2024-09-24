@@ -9,7 +9,7 @@ class Connect4Game:
         self.master.configure(bg='#3498db')
         self.board =  [[0] * 7 for _ in range(6)]
         self.turn = 1
-        self.create_drop_widgets(0)
+        self.create_drop_button(0)
         self.create_widgets() 
 
 
