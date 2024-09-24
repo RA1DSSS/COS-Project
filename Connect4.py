@@ -40,13 +40,13 @@ class Connect4Game:
             self.buttons.append(button_row)
         return button
 
-    def drop_piece(self, col, row):
-         if self.board[row][col] == 0:
+    def drop_piece(self, row, col):
+        if self.board[row][col] == 0:
             current_row = row
             while current_row < 5 and self.board[current_row+1][col] == 0:
                 current_row += 1
             self.board[current_row][col] = self.turn
-            self.update_drop_piece(current_row, col)
+            self.update_drop_peices(current_row, col)
             if self.check_winner(current_row, col):
                 messagebox.showinfo("Winner", f"Player {self.turn} wins!")
                 self.reset_board()
@@ -57,12 +57,12 @@ class Connect4Game:
                 self.turn = 3 - self.turn
     
 
-    def update_drop_peices(self, col, row):
+    def update_drop_peices(self, row, col):
         player = self.board[row][col]
         color = "red" if player == 1 else "yellow"
         self.buttons[row][col].config(bg=color, state="disabled")
 
-    def check_winner(self, col, row):
+    def check_winner(self, row, col):
         directions = [(1, 0), (0, 1), (1, 1), (-1, 1)]
         for dr, dc in directions:
             count = 1
